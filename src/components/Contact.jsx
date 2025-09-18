@@ -18,20 +18,29 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+  const formDataObj = new FormData();
+  formDataObj.append("form-name", "contact");
+  Object.keys(formData).forEach((key) => {
+    formDataObj.append(key, formData[key]);
+  });
 
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 5000);
-    }, 2000);
-  };
+  try {
+    await fetch("/", {
+      method: "POST",
+      body: formDataObj,
+    });
+    setSubmitStatus("success");
+    setFormData({ name: "", email: "", subject: "", message: "" });
+  } catch (error) {
+    setSubmitStatus("error");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   const contactInfo = [
     {
@@ -220,10 +229,22 @@ const Contact = () => {
               <h3 className="text-2xl font-bold text-white mb-6">
                 Send Message
               </h3>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
+<form
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  onSubmit={handleSubmit}
+  className="space-y-6"
+>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
+                    <input type="hidden" name="form-name" value="contact" />
+  <p hidden>
+    <label>
+      Don’t fill this out: <input name="bot-field" />
+    </label>
+  </p>
                     <label
                       htmlFor="name"
                       className="block text-sm font-medium text-gray-300 mb-2"
