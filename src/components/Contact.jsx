@@ -226,7 +226,14 @@ const Contact = () => {
               <h3 className="text-2xl font-bold text-white mb-6">
                 Send Message
               </h3>
-<form name="contact" netlify>
+<form
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  onSubmit={handleSubmit}
+  className="space-y-6"
+>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <input type="hidden" name="form-name" value="contact" />
