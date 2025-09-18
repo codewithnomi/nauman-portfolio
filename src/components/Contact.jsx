@@ -17,20 +17,17 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
   e.preventDefault();
   setIsSubmitting(true);
 
-  const formDataObj = new FormData();
-  formDataObj.append("form-name", "contact");
-  Object.keys(formData).forEach((key) => {
-    formDataObj.append(key, formData[key]);
-  });
+  const formDataObj = new FormData(e.target);
 
   try {
     await fetch("/", {
       method: "POST",
-      body: formDataObj,
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formDataObj).toString(),
     });
     setSubmitStatus("success");
     setFormData({ name: "", email: "", subject: "", message: "" });
@@ -236,7 +233,6 @@ const Contact = () => {
   netlify-honeypot="bot-field"
   onSubmit={handleSubmit}
   className="space-y-6"
-  netlify
 >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
