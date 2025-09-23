@@ -107,7 +107,15 @@ const Hero = () => {
                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                   </svg>
                   <span className="text-white text-xs font-medium">
-                    Profile Photo
+                    <img
+                src="/src/assets/Gemini_Generated_Image_6784fu6784fu6784.png"
+                alt="Nauman Farooq - Senior Full-Stack Developer"
+                className="w-full h-full object-cover rounded-full relative z-10"
+                onError={(e) => {
+                  e.target.style.display = "none";
+                  e.target.nextSibling.style.display = "flex";
+                }}
+              />
                   </span>
                 </div>
               </div>
