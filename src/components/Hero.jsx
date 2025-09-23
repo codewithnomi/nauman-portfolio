@@ -86,7 +86,7 @@ const Hero = () => {
             <div className="w-40 h-40 md:w-48 md:h-48 rounded-full shadow-2xl animate-glow relative overflow-hidden border-4 border-gradient-to-br from-primary-400 to-accent-500">
               <div className="absolute inset-0 bg-gradient-to-br from-primary-400/20 to-accent-500/20 rounded-full animate-pulse"></div>
               <img
-                src="/api/placeholder/300/300"
+                src="/src/assets/Gemini_Generated_Image_6784fu6784fu6784.png"
                 alt="Nauman Farooq - Senior Full-Stack Developer"
                 className="w-full h-full object-cover rounded-full relative z-10"
                 onError={(e) => {
@@ -99,15 +99,7 @@ const Hero = () => {
                 style={{ display: "none" }}
               >
                 <div className="text-center">
-                  <img
-                src="/src/assets/Gemini_Generated_Image_6784fu6784fu6784.png"
-                alt="Nauman Farooq - Senior Full-Stack Developer"
-                className="w-full h-full object-cover rounded-full relative z-10"
-                onError={(e) => {
-                  e.target.style.display = "none";
-                  e.target.nextSibling.style.display = "flex";
-                }}
-              />
+                  
                   {/* <span className="text-white text-xs font-medium">
                     
                   </span> */}
